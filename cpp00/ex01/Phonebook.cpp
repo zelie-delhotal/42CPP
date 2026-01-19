@@ -1,33 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 17:17:32 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/19 15:45:10 by gdelhota         ###   ########.fr       */
+/*   Created: 2026/01/19 15:23:40 by gdelhota          #+#    #+#             */
+/*   Updated: 2026/01/19 15:23:42 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 
-class Contact
-{
-	private:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickname;
-		std::string	darkestSecret;
-		std::string	phoneNumber;
-		Contact();
-		~Contact();
-
-	public:
-		void	print();
-		void	setFirst();
-		void	setLast();
-		void	setNick();
-		void	setSecret();
-		void	setPhone();
-};

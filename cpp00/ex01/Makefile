@@ -6,7 +6,7 @@
 #    By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/16 17:26:01 by gdelhota          #+#    #+#              #
-#    Updated: 2026/01/19 10:41:20 by gdelhota         ###   ########.fr        #
+#    Updated: 2026/01/19 15:24:13 by gdelhota         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = phonebook
 
-SRCS = main.cpp
+SRCS = main.cpp Contact.cpp Phonebook.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
