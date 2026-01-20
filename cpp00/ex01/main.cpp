@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:14:05 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/19 10:34:30 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/20 12:23:46 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <Contact.hpp>
 
 int main(void)
 {
 	std::string	input;
+	Contact		test;
 
 	while (std::getline(std::cin, input))
 	{
@@ -23,7 +25,10 @@ int main(void)
 			continue;
 
 		if (input == "SEARCH")
+		{
+			test.print(1);
 			continue;
+		}
 
 		if (input == "EXIT")
 			return (0);

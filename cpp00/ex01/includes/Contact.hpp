@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:17:32 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/19 15:45:10 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:00:34 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ class Contact
 		std::string	nickname;
 		std::string	darkestSecret;
 		std::string	phoneNumber;
-		Contact();
-		~Contact();
+
+		std::string ft_truncate(std::string str, size_t len);
 
 	public:
-		void	print();
+		Contact();
+		~Contact();
+		void	print(int id);
+		void	printDetails();
 		void	setFirst();
 		void	setLast();
 		void	setNick();
