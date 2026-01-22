@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 18:11:57 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/21 20:19:26 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/22 00:58:02 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class HumanA
 {
 	private:
-		Weapon		&weapon;
 		std::string	name;
+		Weapon		&weapon;
 	public:
 		HumanA(std::string n, Weapon &w);
 		~HumanA();

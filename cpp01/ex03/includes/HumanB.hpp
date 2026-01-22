@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 18:11:57 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/21 20:08:19 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/22 01:11:14 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class HumanB
 	public:
 		HumanB(std::string n);
 		~HumanB();
-		void setWeapon(Weapon w);
+		void setWeapon(Weapon &w);
 		void attack();
 };
 

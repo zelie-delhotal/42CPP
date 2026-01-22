@@ -6,15 +6,15 @@
 #    By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 16:56:43 by gdelhota          #+#    #+#              #
-#    Updated: 2026/01/21 16:58:05 by gdelhota         ###   ########.fr        #
+#    Updated: 2026/01/22 01:18:20 by gdelhota         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = violence
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 SRC_DIR = srcs/
@@ -35,12 +35,12 @@ SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(@D)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -I$(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)
