@@ -6,13 +6,13 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 19:00:27 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 22:58:59 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/22 23:07:37 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ClapTrap.hpp>
 
-ClapTrap::ClapTrap() : _name("generic Name"), _hp(10), _energy(10), _attack(0)
+ClapTrap::ClapTrap() : _hp(10), _energy(10), _attack(0)
 {
 	std::cout << "Claptrap default constructor called!" << std::endl;
 }
@@ -20,7 +20,13 @@ ClapTrap::ClapTrap() : _name("generic Name"), _hp(10), _energy(10), _attack(0)
 ClapTrap::ClapTrap(const std::string &n) : _hp(10), _energy(10), _attack(0)
 {
 	this->_name = n;
-	std::cout << "Claptrap parametrized constructor called" << std::endl;
+	std::cout << "Claptrap parametrized constructor called (name)" << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string &n, int h, int e, int a) : _hp(h), _energy(e), _attack(a)
+{
+	this->_name = n;
+	std::cout << "Claptrap parametrized constructor called (full)" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hp(other._hp), _energy(other._energy), _attack(other._attack)
@@ -50,7 +56,7 @@ void ClapTrap::attack(const std::string& target)
 {
 	if (this->_hp <= 0)
 	{
-		std::cout << "Claptrap " << this->_name << "does not have enough health to attack!" << std::endl;
+		std::cout << "Claptrap " << this->_name << " does not have enough health to attack!" << std::endl;
 		return;
 	}
 	if (this->_energy <= 0)
