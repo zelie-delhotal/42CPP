@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:12:06 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 23:39:38 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 17:01:05 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class FragTrap : public ClapTrap
 		FragTrap &operator=(const FragTrap &other);
 		~FragTrap();
 		void attack(const std::string &target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
 		void highFivesGuys();
 };
 

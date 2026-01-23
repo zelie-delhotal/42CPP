@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:24:10 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 23:33:07 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 17:01:37 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,43 +67,12 @@ void ScavTrap::attack(const std::string& target)
 	std::cout << "Scavtrap " << this->_name << " attacks " << target << ", causing " << this->_attack << " damage" << std::endl;
 }
 
-void ScavTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "Scavtrap " << this->_name << " took " << amount << " damage!" << std::endl;
-	if (this->_hp <= 0)
-	{
-		std::cout << "Fortunately it does not do much. Unfortunately it was already dead before." << std::endl;
-		return;
-	}
-	this->_hp -= amount;
-	if (this->_hp > 0)
-		std::cout << "It has " << this->_hp << " health left." << std::endl;
-	else
-		std::cout << this->_name << " dies on the spot!" << std::endl;
-}
-
-void ScavTrap::beRepaired(unsigned int amount)
-{
-	if (this->_hp <= 0)
-	{
-		std::cout << "Scavtrap " << this->_name << " is dead and cannot repair!" << std::endl;
-		return;
-	}
-	if (this->_energy <= 0)
-	{
-		std::cout << "Scavtrap " << this->_name << " does not have enough energy to repair!" << std::endl;
-		return;
-	}
-	this->_energy--;
-	this->_hp += amount;
-	std::cout << "Scavtrap " << this->_name << " repairs itself for " << amount << " health points" << std::endl;
-	std::cout << "It now has " << this->_hp << " health" << std::endl;
-}
-
 void ScavTrap::guardGate()
 {
 	if (this->_hp <= 0)
 		std::cout << "Dead robots guard no gates!" << std::endl;
+	else if (this->_energy <= 0)
+		std::cout << "Scavtrap " << this->_name << " is too tired to guard anything!" << std::endl;
 	else
 		std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode" << std::endl;
 }

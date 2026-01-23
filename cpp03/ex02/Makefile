@@ -6,7 +6,7 @@
 #    By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/22 05:15:32 by gdelhota          #+#    #+#              #
-#    Updated: 2026/01/22 23:44:50 by gdelhota         ###   ########.fr        #
+#    Updated: 2026/01/23 15:22:55 by gdelhota         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ $(NAME): $(OBJS)
 	$(CXX) $(CPPFLAGS) -I$(INCLUDES) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f $(NAME)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -rf $(OBJS)
+	rm -f $(NAME)
 
 re: fclean all
 

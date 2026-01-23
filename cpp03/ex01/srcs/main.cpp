@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 19:38:49 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 23:32:50 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 15:27:43 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main  (void)
 	for (int i=0; i<50; i++)
 		s1.attack("someone");
 	s1.beRepaired(100);
+	s1.guardGate();
 	s1.takeDamage(8);
 	s1.takeDamage(0);
 	ScavTrap s2(s1);
