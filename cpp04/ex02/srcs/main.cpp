@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 03:21:30 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 18:42:06 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 19:16:08 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int main()
 	//AAnimal test;
 	const AAnimal* j = new Dog();
 	delete j;
-	Dog* abc = new Dog();
+	const Dog* abc = new Dog();
 	delete abc;
+	const Cat* def = new Cat();
+	delete def;
 	std::cout << "AAnimal array:" << std::endl;
 	AAnimal *array[10];
 	for (int i = 0; i < 10; i++)
