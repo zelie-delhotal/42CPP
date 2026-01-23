@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:27:13 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 18:47:44 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 00:40:17 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ class Fixed
 
 		Fixed& operator+=(const Fixed &other);
 
-		Fixed& operator+(Fixed l, const Fixed &r);
-		Fixed& operator-(const Fixed &other);
-		Fixed& operator*(const Fixed &other);
-		Fixed& operator/(const Fixed &other);
+		Fixed operator+(const Fixed &other);
+		Fixed operator-(const Fixed &other);
+		Fixed operator*(const Fixed &other);
+		Fixed operator/(const Fixed &other);
 
 		//prefix
 		Fixed& operator++();
@@ -50,6 +50,11 @@ class Fixed
 		//postfix
 		Fixed operator++(int);
 		Fixed operator--(int);
+
+		static Fixed& min(Fixed &a, Fixed &b);
+		static Fixed& max(Fixed &a, Fixed &b);
+		static const Fixed& min(const Fixed &a, const Fixed &b);
+		static const Fixed& max(const Fixed &a, const Fixed &b);
 
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);

@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:44:49 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 18:47:30 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 00:40:01 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,16 +120,24 @@ Fixed Fixed::operator--(int)
 	return old;
 }
 
-Fixed& Fixed::operator+=(const Fixed &other)
+Fixed Fixed::operator+(const Fixed &other)
 {
-	this->_rawBits += other.getRawBits();
-	return *this;
+	return Fixed(this->toFloat() + other.toFloat());
 }
 
-Fixed& Fixed::operator+(Fixed l, const Fixed &r)
+Fixed Fixed::operator-(const Fixed &other)
 {
-	l += r;
-	return l;
+	return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &other)
+{
+	return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &other)
+{
+	return Fixed(this->toFloat() / other.toFloat());
 }
 
 void Fixed::setRawBits(int const raw)
@@ -149,3 +157,24 @@ float Fixed::toFloat() const
 {
 	return ((float) this->_rawBits / 256.0f);
 }
+
+Fixed& Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a<b?a:b);
+}
+	
+Fixed& Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a>b?a:b);
+}
+	
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a<b?a:b);
+}
+	
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a>b?a:b);
+}
+	
