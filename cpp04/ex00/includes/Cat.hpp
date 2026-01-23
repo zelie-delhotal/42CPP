@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 03:36:17 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 03:37:36 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:24:16 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Cat : public Animal
 		Cat(const std::string &t);
 		Cat(const Cat &other);
 		Cat &operator=(const Cat &other);
+		void makeSound() const;
 		~Cat();
-		void makeSound();
 };
 
 #endif

@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 03:39:50 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 12:35:56 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:35:51 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Dog.hpp>
+#include <Cat.hpp>
 #include <iostream>
 
-Dog::Dog(): Animal("Dog")
+Cat::Cat(): Animal("Cat")
 {
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << "Cat default constructor called" << std::endl;
 }
 
-Dog::Dog(const std::string &type)
+Cat::Cat(const std::string &type)
 {
 	this->_type = type;
 	std::cout << "Doc parametric constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animal(other)
 {
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << "Cat copy constructor called" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog &other)
+Cat& Cat::operator=(const Cat &other)
 {
-	std::cout << "Dog assignment operator called" << std::endl;
+	std::cout << "Cat assignment operator called" << std::endl;
 	if (this != &other)
 		this->_type = other._type;
 	return (*this);
 }
 
-void Dog::makeSound() const
+void Cat::makeSound() const
 {
 	std::cout << _type << ": ";
-	std::cout << "Woof" << std::endl;
+	std::cout << "Meow" << std::endl;
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << "Cat destructor called" << std::endl;
 }

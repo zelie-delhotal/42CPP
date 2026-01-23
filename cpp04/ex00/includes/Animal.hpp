@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 02:42:37 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 03:20:41 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:23:58 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Animal
 		Animal(const std::string &t);
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
-		~Animal();
-		std::string &getType();
-		void makeSound();
+		virtual ~Animal();
+		const std::string &getType() const;
+		virtual void makeSound() const;
 };
 
 #endif

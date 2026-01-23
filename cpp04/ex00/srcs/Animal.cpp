@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 02:21:12 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 03:20:50 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:23:21 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ Animal::~Animal()
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-const std::string& Animal::getType()
+const std::string& Animal::getType() const
 {
 	return this->_type;
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
+	std::cout << _type << ": ";
 	std::cout << "**Despicable otherworldy noises**" << std::endl;
 }

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/23 03:07:52 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 12:23:41 by gdelhota         ###   ########.fr       */
+/*   Created: 2026/01/23 02:42:37 by gdelhota          #+#    #+#             */
+/*   Updated: 2026/01/23 12:34:54 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-# include <Animal.hpp>
-# include <string>
+#include <string>
 
-class Dog : public Animal
+class WrongAnimal
 {
+	protected:
+		std::string _type;
 	public:
-		Dog();
-		Dog(const std::string &t);
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		void makeSound() const;
-		~Dog();
+		WrongAnimal();
+		WrongAnimal(const std::string &t);
+		WrongAnimal(const WrongAnimal &other);
+		WrongAnimal &operator=(const WrongAnimal &other);
+		virtual ~WrongAnimal();
+		const std::string &getType() const;
+		virtual void makeSound() const;
 };
 
 #endif
