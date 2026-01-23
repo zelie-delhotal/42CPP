@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:43:43 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 05:44:36 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 13:15:25 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main( void )
 	Fixed b( a );
 	Fixed c;
 	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	a.setRawBits(42);
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;

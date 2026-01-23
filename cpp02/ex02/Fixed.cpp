@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:44:49 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/23 00:40:01 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 13:26:20 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,14 +148,14 @@ void Fixed::setRawBits(int const raw)
 int Fixed::toInt() const
 {
 	int tmp = this->_rawBits >> this->_fractionalBits;
-	if (tmp < 0 && this->_rawBits - tmp * 256 != 0)
-		return tmp + 1;
+	/*if (tmp < 0 && this->_rawBits - tmp * 256 != 0)
+		return tmp + 1;*/
 	return tmp;
 }
 
 float Fixed::toFloat() const
 {
-	return ((float) this->_rawBits / 256.0f);
+	return ((float) this->_rawBits / (float)(1 << this->_fractionalBits));
 }
 
 Fixed& Fixed::min(Fixed &a, Fixed &b)

@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:43:43 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 17:00:34 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 13:31:02 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main( void )
 {
 	Fixed a;
-	Fixed const b( -10 );
+	Fixed const b( 10 );
 	Fixed const c( -42.42f );
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );

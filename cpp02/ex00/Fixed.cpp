@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 05:44:49 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/22 06:47:18 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/23 13:14:05 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	Fixed::getRawBits(void)
 
 void Fixed::setRawBits(int const raw)
 {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->_rawBits = raw;
 }
