@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 21:56:11 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/27 02:18:24 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:52:26 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,15 @@ int Bureaucrat::getGrade() const
 	return this->_grade;
 }
 
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low: Grade cannot be more than 150");
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high: Grade cannot be less than 1");
+}
 void Bureaucrat::incrementGrade()
 {
 	if (this->_grade <= 1)
