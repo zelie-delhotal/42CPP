@@ -6,12 +6,15 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:38:42 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/28 17:36:30 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/28 02:40:23 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Bureaucrat.hpp>
-#include <Form.hpp>
+#include <AForm.hpp>
+#include <RobotomyRequestForm.hpp>
+#include <ShrubberyCreationForm.hpp>
+#include <PresidentialPardonForm.hpp>
 #include <iostream>
 
 int main(void)
@@ -21,13 +24,13 @@ int main(void)
 	Bureaucrat b1;
 	Bureaucrat b2(10);
 	Bureaucrat b3("Bob");
-	Bureaucrat b4("Alice", 1);
+	Bureaucrat b4("Zaphod", 1);
 
 	std::cout << "Constructor tests :" << std::endl;
 	std::cout << "Default Unnamed 150: " << b1 << std::endl;
 	std::cout << "Parametrized Unnamed 10: " << b2 << std::endl;
 	std::cout << "Parametrized Bob 150: " << b3 << std::endl;
-	std::cout << "Parametrized Alice 1: " << b4 << std::endl;
+	std::cout << "Parametrized Zaphod 1: " << b4 << std::endl;
 
 	std::cout << "\nExceptions on constructors:" << std::endl;
 	try
@@ -102,34 +105,35 @@ int main(void)
 	}
 	std::cout << b3 << std::endl;
 
-	Form f;
-	Form f1("test");
-	Form f2(150);
-	Form f3(1, 150);
-	Form f4("form", 10);
-	Form f5("other form", 13, 12);
-	Form f6(f4);
-
-	std::cout << "\nForm Tests: " << std::endl;
-	std::cout << "\nConstructor tests: " << std::endl;
-	std::cout << "default constructor: " << f << std::endl;
-	std::cout << "parametrized (name test): " << f1 << std::endl;
-	std::cout << "parametrized (grades 150): " << f2 << std::endl;
-	std::cout << "parametrized (sign 1 exec 150): " << f3 << std::endl;
-	std::cout << "parametrized (name form grades 10): " << f4 << std::endl;
-	std::cout << "parametrized (name other form sign 13 exec 12): " << f5 << std::endl;
-	std::cout << "copy (name form grades 10): " << f6 << std::endl;
-
-	std::cout << "\nSigning tests:" << std::endl;
-	std::cout << b3 << std::endl;
-	b3.signForm(f2);
-	std::cout << f2 << std::endl;
-	std::cout << b2 << std::endl;
-	b2.signForm(f4);
-	std::cout << f4 << std::endl;
-	b2.signForm(f3);
-	std::cout << f3 << std::endl;
-	Form f7(f4);
-	std::cout << "Copy constructor test, this form should not be signed: " << std::endl;
-	std::cout << f7 << std::endl;
+	ShrubberyCreationForm s1("Mojave");
+	try
+	{
+		s1.execute(b4);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	s1.beSigned(b4);
+	s1.execute(b4);
+	RobotomyRequestForm r1("Marvin");
+	try
+	{
+		r1.execute(b4);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	r1.beSigned(b4);
+	r1.execute(b4);
+	r1.execute(b4);
+	r1.execute(b4);
+	r1.execute(b4);
+	r1.execute(b4);
+	r1.execute(b4);
+	PresidentialPardonForm p1("John");
+	b4.executeForm(p1);
+	p1.beSigned(b4);
+	b4.executeForm(p1);
 }

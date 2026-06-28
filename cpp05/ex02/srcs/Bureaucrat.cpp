@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 21:56:11 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/28 17:54:53 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/28 02:53:23 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form& f)
+void Bureaucrat::signForm(AForm& f)
 {
 	try
 	{
@@ -101,5 +101,18 @@ void Bureaucrat::signForm(Form& f)
 	catch (std::exception &e)
 	{
 		std::cout << this->_name << "couldn't sign form " << f.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const& form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed form " << form.getName() << std::endl();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->_name << " couldn't execute form " << form.getName() << " because " << e.what() << std::endl;
 	}
 }

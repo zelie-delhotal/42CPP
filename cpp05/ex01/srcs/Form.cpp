@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 02:56:35 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/01/27 04:05:48 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:55:16 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,26 @@ int Form::getExecGrade() const
 	return this->_execGrade;
 }
 
+bool Form::isSigned() const
+{
+	return this->_isSigned;
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+const char* Form::CounterfeitException::what() const throw()
+{
+	return("Counterfeit: Cannot use operator = on forms");
+}
+
 void Form::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() > this->_signGrade)
@@ -90,6 +110,9 @@ void Form::beSigned(const Bureaucrat &b)
 
 std::ostream& operator<<(std::ostream &out, const Form& f)
 {
-	out << "Form " << f.getName() << ": sign grade " << f.getSignGrade() << ", execution grade " << f.getExecGrade();
+	out << "Form " << f.getName()
+		<< ": sign grade " << f.getSignGrade()
+		<< ", execution grade " << f.getExecGrade()
+		<< ", signed: " << (f.isSigned()?"yes":"no");
 	return out;
 }
