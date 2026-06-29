@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:38:42 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/28 02:40:23 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/29 02:11:48 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <RobotomyRequestForm.hpp>
 #include <ShrubberyCreationForm.hpp>
 #include <PresidentialPardonForm.hpp>
+#include <Intern.hpp>
 #include <iostream>
 
 int main(void)
@@ -105,35 +106,34 @@ int main(void)
 	}
 	std::cout << b3 << std::endl;
 
-	ShrubberyCreationForm s1("Mojave");
+	Intern i;
+	AForm* s1 = i.makeForm("shrubbery creation", "Mojave");
 	try
 	{
-		s1.execute(b4);
+		s1->execute(b4);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	s1.beSigned(b4);
-	s1.execute(b4);
-	RobotomyRequestForm r1("Marvin");
+	s1->beSigned(b4);
+	s1->execute(b4);
+	AForm* r1 = i.makeForm("robotomy request", "Marvin");
 	try
 	{
-		r1.execute(b4);
+		r1->execute(b4);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	r1.beSigned(b4);
-	r1.execute(b4);
-	r1.execute(b4);
-	r1.execute(b4);
-	r1.execute(b4);
-	r1.execute(b4);
-	r1.execute(b4);
-	PresidentialPardonForm p1("John");
-	b4.executeForm(p1);
-	p1.beSigned(b4);
-	b4.executeForm(p1);
+	r1->beSigned(b4);
+	r1->execute(b4);
+	r1->execute(b4);
+	AForm* p1 = i.makeForm("presidential pardon", "John");
+	b4.executeForm(*p1);
+	p1->beSigned(b4);
+	b4.executeForm(*p1);
+	AForm* a = i.makeForm("bullshit", "form");
+	delete a;
 }

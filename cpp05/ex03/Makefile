@@ -6,7 +6,7 @@
 #    By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/26 21:42:28 by gdelhota          #+#    #+#              #
-#    Updated: 2026/06/28 02:27:58 by gdelhota         ###   ########.fr        #
+#    Updated: 2026/06/29 00:59:52 by gdelhota         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR = objs/
 
 INCLUDES = includes/
 
-SRCS = Bureaucrat.cpp AForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp main.cpp
+SRCS = Bureaucrat.cpp AForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp Intern.cpp main.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
