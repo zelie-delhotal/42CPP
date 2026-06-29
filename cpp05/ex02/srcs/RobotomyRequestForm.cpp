@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:06:20 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/28 02:30:03 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/29 18:31:17 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Creation Form", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Request Form", 72, 45)
 {
 	this->_target = target;
 }
@@ -27,8 +27,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-	if (!this->isSigned())
+	if (!isSigned())
+	{
+		std::cout << *this << std::endl;
 		throw AForm::UnsignedException();
+	}
 	if (executor.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();
 	else

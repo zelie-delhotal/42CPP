@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:06:20 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/28 02:28:57 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/29 18:35:25 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <cstdlib>
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm("Robotomy Creation Form", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm("Presidential Pardon Form", 25, 5)
 {
 	this->_target = target;
 }
@@ -27,7 +27,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
-	if (!this->isSigned())
+	if (!isSigned())
 		throw AForm::UnsignedException();
 	if (executor.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();

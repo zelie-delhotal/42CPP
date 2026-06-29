@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:06:20 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/25 16:21:36 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:55:31 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
 	std::fstream fs;
-	if (!this->isSigned())
+	if (!isSigned())
 		throw AForm::UnsignedException();
 	if (executor.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();

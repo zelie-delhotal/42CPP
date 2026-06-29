@@ -6,7 +6,7 @@
 /*   By: gdelhota <gdelhota@student.42perpignan.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:38:42 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/29 02:15:00 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/06/29 18:22:17 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,8 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	b4.signForm(s1);
-	r1.execute(b4);
-	r1.execute(b4);
-	r1.execute(b4);
+	b4.signForm(r1);
+	std::cout << r1 << std::endl;
 	r1.execute(b4);
 	r1.execute(b4);
 	r1.execute(b4);
