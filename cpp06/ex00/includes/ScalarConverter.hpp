@@ -6,7 +6,7 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 19:16:58 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/06/29 20:12:22 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/06 23:00:46 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 #include <string>
 #include <iostream>
+
+typedef struct output {
+	int Int;
+	char Char;
+	float Float;
+	double Double;
+} tOutput;
 
 class ScalarConverter {
 	private:
