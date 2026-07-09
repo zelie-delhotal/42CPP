@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.h                                             :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/09 03:51:30 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/09 21:42:25 by gdelhota         ###   ########.fr       */
+/*   Created: 2026/07/09 23:01:59 by gdelhota          #+#    #+#             */
+/*   Updated: 2026/07/10 01:05:01 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-#define DATA_H
+#include "Serializer.hpp"
 
-typedef struct Data
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	int	a;
-	int	b;
-} Data_t;
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-#endif
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data*>(raw));
+}
