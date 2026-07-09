@@ -6,50 +6,78 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 19:16:23 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/07 15:09:58 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/09 02:27:32 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <limits>
+#include <cstdlib>
+
+//Possible casts: 
+//static_cast
+//dynamic_cast
+//const_cast
+//reinterpret_cast
 
 void convertFromChar(tOutput* output, const std::string& s)
 {
+	std::cout << "detected Char" << std::endl;
 	char c = s[0];
 
 	output->Char	= c;
-	output->Int		= (int) c;
-	output->Float	= (float) c;
-	output->Double	= (double) c;
+	output->Int		= static_cast<int>(c);
+	output->Float	= static_cast<float>(c);
+	output->Double	= static_cast<double>(c);
 }
 
 void convertFromInt(tOutput* output, const std::string& s)
 {
-	(void) output;
-	(void) s;
+	std::cout << "detected Int" << std::endl;
+	int n = std::atoi(s.c_str());
+
+	output->Char	= static_cast<char>(n);
+	output->Int		= n;
+	output->Float	= static_cast<float>(n);
+	output->Double	= static_cast<double>(n);
 }
 
 void convertFromFloat(tOutput* output, const std::string& s)
 {
-	(void) s;
-	float f = std::numeric_limits<float>::quiet_NaN();
+	std::cout << "detected Float" << std::endl;
+	float f;
+	if (s == "nanf")
+		f = std::numeric_limits<float>::quiet_NaN();
+	else if (s == "+inff")
+		f = std::numeric_limits<float>::infinity();
+	else if (s == "-inff")
+		f = -std::numeric_limits<float>::infinity();
+	else
+		f = atof(s.c_str());
 
+	output->Char	= static_cast<char>(f);
+	output->Int		= static_cast<int>(f);
 	output->Float	= f;
-	output->Double	= (double) f;
+	output->Double	= static_cast<double>(f);
 }
 
 void convertFromDouble(tOutput* output, const std::string& s)
 {
-	(void) output;
-	(void) s;
-}
+	std::cout << "detected Double" << std::endl;
+	double	d;
+	if (s == "nan")
+		d = std::numeric_limits<double>::quiet_NaN();
+	else if (s == "+inf")
+		d = std::numeric_limits<double>::infinity();
+	else if (s == "-inf")
+		d = -std::numeric_limits<double>::infinity();
+	else
+		d = strtod(s.c_str(), NULL);
 
-void printPseudoLiteral(const std::string& s)
-{
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: impossible" << std::endl;
-	std::cout << "float: " << s << 'f' << std::endl;
-	std::cout << "double: " << s << std::endl;
+	output->Char	= static_cast<char>(d);
+	output->Int		= static_cast<int>(d);
+	output->Float	= static_cast<float>(d);
+	output->Double	= d;
 }
 
 void printOutput(const tOutput o)
@@ -78,26 +106,39 @@ void printOutput(const tOutput o)
 void (*selectConverter(const std::string& s))(tOutput*, const std::string&)
 {
 	std::string::const_iterator it = s.begin();
-	while (isdigit(*it))
+	if(*it == '-' || *it == '+')
 		it++;
-	if (*it == '.')
+	else if(*it >= 32 && *it < 127 && !isdigit(*it))
 	{
+		it++;
+		if (it == s.end())
+			return (convertFromChar);
+	}
+	int hasDigits = 0;
+	while (isdigit(*it))
+	{
+		hasDigits = 1;
+		it++;
+	}
+	if (*it == '.' && hasDigits)
+	{
+		hasDigits = 0;
 		it++;
 		while (isdigit(*it))
+		{
+			hasDigits = 1;
 			it++;
-		if (*it == 'f')
+		}
+		if (*it == 'f' && hasDigits)
 			return (convertFromFloat);
-		else if (it == s.end())
+		else if (it == s.end() && hasDigits)
 			return (convertFromDouble);
 	}
-	else if (it == s.begin())
-	{
-		if (s == "nan" || s == "+inf" || s == "-inf")
-			return (convertFromDouble);
-		if (s == "nanf" || s == "+inff" || s == "-inff")
-			return (convertFromFloat);
-	}
-	else if (it == s.end())
+	else if (s == "nan" || s == "+inf" || s == "-inf")
+		return (convertFromDouble);
+	else if (s == "nanf" || s == "+inff" || s == "-inff")
+		return (convertFromFloat);
+	else if (it == s.end() && hasDigits)
 		return(convertFromInt);
 	return NULL;
 }
@@ -108,6 +149,14 @@ void ScalarConverter::convert(const std::string &s)
 	void (*converter)(tOutput*, const std::string&);
 
 	converter = selectConverter(s);
+	if (converter == NULL)
+	{
+		std::cout << "char: Impossible" << std::endl;
+		std::cout << "char: Impossible" << std::endl;
+		std::cout << "char: Impossible" << std::endl;
+		std::cout << "char: Impossible" << std::endl;
+		return;
+	}
 	converter(&output, s);
 	printOutput(output);
 }
