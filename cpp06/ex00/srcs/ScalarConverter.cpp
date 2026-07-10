@@ -6,7 +6,7 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 19:16:23 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/09 02:27:32 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/10 21:08:39 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,31 @@
 //const_cast
 //reinterpret_cast
 
+void printOutput(const tOutput o)
+{
+	std::cout << "char: ";
+	if (o.Double >= 32 && o.Double < 127)
+		std::cout << o.Char << std::endl;
+	else if (o.Double < 0)
+		std::cout << "Impossible" << std::endl;
+	else
+		std::cout << "Non Displayable" << std::endl;
+	if (o.Double >= -std::numeric_limits<int>::max() - 1 && o.Double <= std::numeric_limits<int>::max())
+		std::cout << "int: " << o.Int << std::endl;
+	else
+		std::cout << "int: impossible" << std::endl;
+	std::cout.precision(6);
+	std::cout << "float: " << o.Float;
+	if (o.Float - o.Int == 0 && o.Float < 1000000)
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+	std::cout.precision(15);
+	std::cout << "double: " << o.Double;
+	if (o.Double - o.Int == 0 && o.Double < 1000000000000000)
+		std::cout << ".0";
+	std::cout << std::endl;
+}
+
 void convertFromChar(tOutput* output, const std::string& s)
 {
 	std::cout << "detected Char" << std::endl;
@@ -29,17 +54,26 @@ void convertFromChar(tOutput* output, const std::string& s)
 	output->Int		= static_cast<int>(c);
 	output->Float	= static_cast<float>(c);
 	output->Double	= static_cast<double>(c);
+	printOutput(*output);
 }
 
 void convertFromInt(tOutput* output, const std::string& s)
 {
 	std::cout << "detected Int" << std::endl;
 	int n = std::atoi(s.c_str());
+	long l = std::atol(s.c_str());
+
+	if (l != n)
+	{
+		std::cout << "Error: Integer overflow" << std::endl;
+		return;
+	}
 
 	output->Char	= static_cast<char>(n);
 	output->Int		= n;
 	output->Float	= static_cast<float>(n);
 	output->Double	= static_cast<double>(n);
+	printOutput(*output);
 }
 
 void convertFromFloat(tOutput* output, const std::string& s)
@@ -59,6 +93,7 @@ void convertFromFloat(tOutput* output, const std::string& s)
 	output->Int		= static_cast<int>(f);
 	output->Float	= f;
 	output->Double	= static_cast<double>(f);
+	printOutput(*output);
 }
 
 void convertFromDouble(tOutput* output, const std::string& s)
@@ -78,37 +113,13 @@ void convertFromDouble(tOutput* output, const std::string& s)
 	output->Int		= static_cast<int>(d);
 	output->Float	= static_cast<float>(d);
 	output->Double	= d;
-}
-
-void printOutput(const tOutput o)
-{
-	std::cout << "char: ";
-	if (o.Double > 32 && o.Double < 127)
-		std::cout << o.Char << std::endl;
-	else if (o.Double < 0)
-		std::cout << "Impossible" << std::endl;
-	else
-		std::cout << "Non Displayable" << std::endl;
-	if (o.Double >= -std::numeric_limits<int>::max() && o.Double < std::numeric_limits<int>::max())
-		std::cout << "int: " << o.Int << std::endl;
-	else
-		std::cout << "int: impossible" << std::endl;
-	std::cout << "float: " << o.Float;
-	if (o.Float - o.Int == 0)
-		std::cout << ".0";
-	std::cout << "f" << std::endl;
-	std::cout << "double: " << o.Double;
-	if (o.Double - o.Int == 0)
-		std::cout << ".0";
-	std::cout << std::endl;
+	printOutput(*output);
 }
 
 void (*selectConverter(const std::string& s))(tOutput*, const std::string&)
 {
 	std::string::const_iterator it = s.begin();
-	if(*it == '-' || *it == '+')
-		it++;
-	else if(*it >= 32 && *it < 127 && !isdigit(*it))
+	if(*it >= 32 && *it < 127 && !isdigit(*it))
 	{
 		it++;
 		if (it == s.end())
@@ -158,5 +169,4 @@ void ScalarConverter::convert(const std::string &s)
 		return;
 	}
 	converter(&output, s);
-	printOutput(output);
 }
