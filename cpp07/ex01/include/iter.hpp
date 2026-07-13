@@ -6,7 +6,7 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 23:00:08 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/11 00:06:35 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/13 21:30:21 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,21 @@
 
 #include <iostream>
 
-template<typename T>
-void iter(T array[], const int size, void f(T&))
+template<typename T, typename Function>
+void iter(T* array, const int size, Function f)
 {
 	for (int i=0; i<size; i++)
 	{
-		f(array[i]);
+		f(*array);
+		array++;
 	}
+}
+
+//test function only
+template<typename T>
+void print(const T& element)
+{
+	std::cout << element;
 }
 
 #endif
