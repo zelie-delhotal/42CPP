@@ -6,7 +6,7 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 18:34:35 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/19 08:00:24 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:28:39 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,11 @@ class MutantStack : public std::stack<T>
 				{
 					object = &obj;
 				}
-				iterator&	operator++()
-				{
-					object++;
-					return *this;
-				}
-				iterator	operator++(int)
-				{
-					iterator ret = *this;
-					object++;
-					return ret;
-				}
-				iterator&	operator--()
-				{
-					object--;
-					return *this;
-				}
-				iterator	operator--(int)
-				{
-					iterator ret = *this;
-					object--;
-					return ret;
-				}
-				bool		operator==(iterator &other)
-				{
-					return (object == other.object);
-				}
+				iterator&	operator++();
+				iterator	operator++(int);
+				iterator&	operator--();
+				iterator	operator--(int);
+				bool		operator==(iterator &other);
 				bool		operator!=(iterator &other)
 				{
 					return (object != other.object);

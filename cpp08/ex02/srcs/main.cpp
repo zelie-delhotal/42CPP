@@ -6,11 +6,11 @@
 /*   By: gdelhota@student.42perpignan.fr            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 18:30:19 by gdelhota          #+#    #+#             */
-/*   Updated: 2026/07/19 07:58:25 by gdelhota         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:08:13 by gdelhota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MutantStack.hpp"
+#include "MutantStack.tpp"
 #include <iostream>
 
 int main()
